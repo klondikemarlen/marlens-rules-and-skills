@@ -29,6 +29,20 @@
 - Skills are not used directly. The equivalent is **workflows** (process guidance) + **templates** (code examples/end state).
 - Per-agent skills may serve as thin shortcuts to existing workflows, but never as substitutes.
 - **Plans** are a separate category for exploratory, multi-phase work — not a skill or workflow.
+- Keep durable project-specific patterns in the project's local docs. Only promote cross-project
+  process habits to global rules or memory.
+
+## Branch Continuation
+
+- When resuming ongoing branch work, inspect the repository state instead of relying on chat memory
+  alone.
+- Separate completed commits, staged changes, unstaged changes, and untracked files when summarizing
+  current work.
+- Treat staged files as intentionally selected work unless the user says otherwise.
+- Preserve unrelated unstaged and untracked files. Plan files and exploratory notes are context, not
+  commit candidates, unless the user explicitly asks to include them.
+- Compare any existing plan or handoff note against current code and commits before using it as a
+  checklist.
 
 ## Shell
 

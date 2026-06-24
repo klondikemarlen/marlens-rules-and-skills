@@ -17,6 +17,7 @@ Restart the agent after changing this file. Global instructions load at startup.
 ## Files
 
 - `AGENTS.md` - global agent instructions loaded by OMP, Codex, and OpenCode
-- `skills/` - global skill aliases copied from the local OMP managed-skills directory
-- `wrap/agents/` - reusable WRAP agent workflows, references, and templates
-- `wrap/COMMITTING.md` - WRAP commit-message guidance
+- `AGENT_RULES.md` - agent-agnostic shared decision rules
+- `COMMITTING.md` - reusable commit-message guidance
+- `skills/` - global skill aliases and reusable skills
+- `agents/` - generic workflow, template, reference, and plan discovery docs

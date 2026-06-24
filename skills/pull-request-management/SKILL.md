@@ -1,10 +1,10 @@
 ---
 name: pull-request-management
-description: Use for creating or editing WRAP pull requests; delegates to the repo pull-request-management workflow.
+description: Use when creating or editing pull requests; delegates to the local pull-request-management workflow.
 ---
 
 # Pull Request Management
 
-When creating or editing a WRAP pull request, use the repository workflow at `agents/workflows/pull-request-management-workflow.md`.
+Read and follow `agents/workflows/pull-request-management-workflow.md` from this repo or the target project before creating or editing a pull request.
 
-Do not duplicate the workflow here. Read and follow the workflow from the repository so PR title, body, screenshots, and testing instructions stay aligned with project-local conventions.
+This skill is an alias. The workflow file is authoritative.

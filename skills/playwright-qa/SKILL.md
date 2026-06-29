@@ -5,6 +5,8 @@ description: Use when running browser or Playwright QA and reporting user-visibl
 
 # Browser QA
 
+Prefer `browser-qa` for new work. This skill remains as a backward-compatible alias for Playwright-specific prompts.
+
 Read and follow `skill://playwright-qa/agents/workflows/browser-qa-workflow.md` before browser-driven QA.
 
 If QA results will become PR testing instructions, also read `skill://playwright-qa/agents/workflows/testing-instructions-workflow.md`.

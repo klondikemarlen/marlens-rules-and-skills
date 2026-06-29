@@ -14,11 +14,12 @@ Use direct install instead of the marketplace flow when you want both the packag
 
 This installs these OMP skills:
 
+- `browser-qa`
 - `code-review`
 - `commit`
 - `git-rebase`
 - `learn`
-- `playwright-qa`
+- `playwright-qa` (backward-compatible alias for `browser-qa`)
 - `pull-request-management`
 - `release-notes`
 - `testing-instructions`

@@ -7,6 +7,7 @@ const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const check = process.argv.includes("--check");
 
 const mirrors = {
+  "browser-qa": ["browser-qa-workflow.md", "testing-instructions-workflow.md"],
   "code-review": ["code-review-workflow.md"],
   commit: ["commit-workflow.md"],
   "git-rebase": ["git-rebase-workflow.md"],

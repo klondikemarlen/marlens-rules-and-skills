@@ -4,12 +4,13 @@ Reusable agent rules and skills, plus a thin OMP plugin adapter.
 
 ## OMP plugin install
 
-Use this path if you use OMP:
+Recommended direct install:
 
 ```bash
-omp plugin marketplace add klondikemarlen/marlens-rules-and-skills
-omp plugin install marlens-rules-and-skills@marlens-rules-and-skills
+omp plugin install github:klondikemarlen/marlens-rules-and-skills
 ```
+
+Use direct install instead of the marketplace flow when you want both the package skills and the OMP extension command.
 
 This installs these OMP skills:
 
@@ -23,10 +24,10 @@ This installs these OMP skills:
 
 It also adds `/marlens-rules-and-skills [task]`, a prompting shortcut that asks the agent to use the installed rules/workflows.
 
-For local plugin development, load the package root so OMP also discovers sibling `skills/`:
+For local plugin development, link the package root so OMP uses the same plugin path:
 
 ```bash
-omp --extension /path/to/rules-and-skills-checkout
+omp plugin link /path/to/rules-and-skills-checkout
 ```
 
 ## Manual install

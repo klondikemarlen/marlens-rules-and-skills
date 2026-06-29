@@ -16,6 +16,7 @@ This installs these OMP skills:
 
 - `code-review`
 - `commit`
+- `git-rebase`
 - `learn`
 - `playwright-qa`
 - `pull-request-management`

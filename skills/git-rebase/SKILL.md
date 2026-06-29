@@ -1,0 +1,10 @@
+---
+name: git-rebase
+description: Use when fixing up, amending, rewording, squashing, or reordering older commits with non-interactive git rebase safety.
+---
+
+# Git Rebase
+
+Read and follow `agents/workflows/git-rebase-workflow.md` from this repo or the target project before rewriting commit history.
+
+This skill is an alias. The workflow file is authoritative.

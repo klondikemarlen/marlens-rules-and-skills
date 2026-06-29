@@ -30,6 +30,7 @@ Examples:
 
 - `code-review-workflow.md`
 - `commit-workflow.md`
+- `git-rebase-workflow.md`
 - `learn-workflow.md`
 - `pull-request-management-workflow.md`
 - `testing-instructions-workflow.md`

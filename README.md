@@ -1,10 +1,12 @@
 # Marlen's Rules and Skills
 
-Generic agent rules plus a thin OMP plugin adapter.
+Reusable agent rules and skills, plus a thin OMP plugin adapter.
 
-## Generic use
+## Manual install
 
-Clone this repo anywhere, then link each tool's global rules file plus the home-level fallback to that checkout:
+Use this path for agents without a plugin system.
+
+Clone this repo anywhere, then link or copy the shared rules file into the locations your agents read:
 
 ```bash
 REPO=/path/to/rules-and-skills-checkout
@@ -15,9 +17,11 @@ ln -sf "$REPO/AGENTS.md" "$HOME/.omp/agent/AGENTS.md"
 ln -sf "$REPO/AGENTS.md" "$HOME/AGENTS.md"
 ```
 
+If an agent cannot load plugins or skills, keep the checkout nearby and point it at `AGENTS.md`; the workflow source lives under `agents/`, and the public skill entrypoints live under `skills/`.
+
 Restart the agent after changing this file. Global instructions load at startup.
 
-## OMP plugin use
+## OMP plugin install
 
 This repo also ships an OMP package adapter:
 
@@ -54,6 +58,10 @@ For local development, load the package root so OMP also discovers sibling `skil
 ```bash
 omp --extension /path/to/rules-and-skills-checkout
 ```
+
+## Future adapters
+
+Only OMP has a plugin adapter today. Add future agent-specific adapters beside it, for example `claude-plugin/`, `codex-plugin/`, or `opencode-plugin/`, and have them consume the root `AGENTS.md`, `agents/`, and `skills/` content instead of copying workflows.
 
 ## Name
 

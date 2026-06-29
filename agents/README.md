@@ -6,6 +6,8 @@ This directory contains reusable, agent-readable workflows, templates, reference
 
 Directory READMEs under `agents/` are discovery documents. Use them to find relevant workflows, templates, or plans, then read the underlying files directly. The individual workflow/template/plan files are the source of truth for task-specific instructions.
 
+Top-level `skills/` are compatibility entry points. Keep real procedures in `workflows/`, copyable examples in `templates/`, and durable background in `references/`; skills should only point to the authoritative file.
+
 ## Directory Structure
 
 ```text

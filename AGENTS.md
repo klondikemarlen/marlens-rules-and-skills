@@ -32,6 +32,14 @@
 - Prefer expanded, readable control flow: guard clauses, blank lines after guards, and named constants for magic values.
 - Keep project-specific architecture, schema, auth, and formatting rules in the project's local docs.
 
+## Ponytail Standards
+
+- Prefer deletion, reuse, standard library, native platform features, then installed dependencies before writing custom code.
+- Avoid speculative abstractions, boilerplate, scaffolding, and configuration for values that do not vary.
+- Fix bugs at the shared root and check sibling callers before patching one path.
+- Leave the smallest runnable check for non-trivial logic; skip test scaffolding that does not protect behavior.
+- Mark deliberate shortcuts with a `ponytail:` comment that names the ceiling and upgrade path.
+
 ## Agent Architecture
 
 - Skills are not used directly. The equivalent is **workflows** (process guidance) + **templates** (code examples/end state).

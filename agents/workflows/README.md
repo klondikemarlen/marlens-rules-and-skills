@@ -15,6 +15,8 @@ and output contracts.
   produces, and the key decision rules.
 - **Specificity:** Keep project-specific details out of generic workflows. If a workflow is
   project-specific, put it under a project-named subtree or name that scope explicitly.
+- **Skill shims:** Keep substantive procedures here. Top-level `skills/` files should be thin aliases
+  that point to the authoritative workflow or template.
 
 ## Naming
 
@@ -22,6 +24,8 @@ Use `verb-noun-workflow.md` or `task-domain-workflow.md`.
 
 Examples:
 
+- `commit-workflow.md`
+- `learn-workflow.md`
 - `pull-request-management-workflow.md`
 - `testing-instructions-workflow.md`
 - `release-notes-workflow.md`

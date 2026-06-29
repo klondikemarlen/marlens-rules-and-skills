@@ -1,0 +1,23 @@
+{
+  "name": "agent-global-rules",
+  "owner": {
+    "name": "klondikemarlen"
+  },
+  "metadata": {
+    "description": "OMP catalog for the generic agent-global-rules core."
+  },
+  "plugins": [
+    {
+      "name": "agent-global-rules",
+      "description": "Generic global agent rules and skill shims packaged for OMP.",
+      "source": {
+        "source": "github",
+        "repo": "klondikemarlen/agent-global-rules",
+        "ref": "main"
+      },
+      "category": "development",
+      "tags": ["agents", "rules", "skills"],
+      "repository": "https://github.com/klondikemarlen/agent-global-rules"
+    }
+  ]
+}

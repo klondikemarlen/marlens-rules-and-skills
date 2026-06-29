@@ -15,8 +15,8 @@ and output contracts.
   produces, and the key decision rules.
 - **Specificity:** Keep project-specific details out of generic workflows. If a workflow is
   project-specific, put it under a project-named subtree or name that scope explicitly.
-- **Skill shims:** Keep substantive procedures here. Top-level `skills/` files should be thin aliases
-  that point to the authoritative workflow or template.
+- **Skill shims:** Keep substantive procedures here. Top-level `skills/` files should stay thin aliases
+  that point to the authoritative workflow or template; any nested `skills/*/agents/workflows/` files are packaged mirrors for sandboxed `skill://` reads and must match these authoritative files.
 - **Local precedence:** Project-local rules, docs, workflows, templates, and skills override this
   package. Use this package only as the base layer when the target project does not say otherwise.
 - **Command discovery:** Read project-local setup docs and wrappers before choosing commands. For

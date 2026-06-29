@@ -75,8 +75,8 @@ Use `marlens-rules-and-skills` as the package/plugin slug, GitHub repo name, and
 - `AGENTS.md` - global agent instructions loaded by OMP or manual symlink consumers
 - `AGENT_RULES.md` - agent-agnostic shared decision rules
 - `COMMITTING.md` - reusable commit-message guidance
-- `agents/` - generic workflow, template, reference, and plan discovery docs
-- `skills/` - thin skill aliases that point to authoritative workflows/templates
+- `agents/` - authoritative generic workflow, template, reference, and plan discovery docs
+- `skills/` - thin skill aliases plus packaged workflow mirrors for `skill://` sandboxed reads
 - `package.json` - OMP package manifest that loads the adapter and exposes sibling skills
 - `omp-plugin/` - OMP-specific runtime adapter; no shared workflow content lives here
 - `.omp-plugin/` - OMP marketplace catalog

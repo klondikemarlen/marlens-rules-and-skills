@@ -6,6 +6,6 @@ auto_execution_mode: 1
 
 # Learn
 
-Read and follow `agents/workflows/learn-workflow.md` from this repo or the target project before capturing durable lessons.
+Read and follow `skill://learn/agents/workflows/learn-workflow.md` before capturing durable lessons.
 
 This skill is an alias. The workflow file is authoritative.

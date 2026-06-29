@@ -11,6 +11,11 @@
   "bin": {
     "git-edit-commit": "./bin/git-edit-commit.js"
   },
+  "scripts": {
+    "sync:skill-workflows": "node bin/sync-skill-workflows.js",
+    "check:skill-workflows": "node bin/sync-skill-workflows.js --check",
+    "prepack": "npm run check:skill-workflows"
+  },
   "files": [
     "AGENTS.md",
     "AGENT_RULES.md",

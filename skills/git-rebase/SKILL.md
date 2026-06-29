@@ -5,6 +5,6 @@ description: Use when fixing up, amending, rewording, squashing, or reordering o
 
 # Git Rebase
 
-Read and follow `agents/workflows/git-rebase-workflow.md` from this repo or the target project before rewriting commit history.
+Read and follow `skill://git-rebase/agents/workflows/git-rebase-workflow.md` before rewriting commit history.
 
 This skill is an alias. The workflow file is authoritative.

@@ -10,11 +10,7 @@
     {
       "name": "marlens-rules-and-skills",
       "description": "Generic global agent rules and skill shims packaged for OMP.",
-      "source": {
-        "source": "github",
-        "repo": "klondikemarlen/marlens-rules-and-skills",
-        "ref": "main"
-      },
+      "source": "./",
       "category": "development",
       "tags": ["agents", "rules", "skills"],
       "repository": "https://github.com/klondikemarlen/marlens-rules-and-skills"

@@ -13,9 +13,9 @@ Use when the user asks to fix up, amend, reword, squash, or reorder commits that
 - Never rewrite public/shared branch history unless the user explicitly asks for that exact branch rewrite.
 - Preserve unrelated staged, unstaged, and untracked files. Stop if the target change is mixed with unrelated work.
 - Prefer `git edit-commit --message-only <commit> "New message"` for message-only fixes to older commits.
-- Prefer `git edit-commit --edit <commit> [message]` for code plus optional message changes to older commits.
-- Prefer `git commit --fixup <commit>` plus `git rebase -i --autosquash <commit>^` only when the helper is unavailable.
-- Avoid opening an editor. Use helper modes or `GIT_SEQUENCE_EDITOR=true` for autosquash rebases when the generated todo is sufficient.
+- Prefer `git edit-commit --edit <commit> [message]` for code plus optional message changes to older commits. This package installs the helper so agents should use it instead of hand-writing rebase todo files.
+- The helper requires a clean worktree. Use scoped `git commit --fixup <commit>` plus autosquash only when the helper is unavailable or the requested edits already exist in the worktree and must be split across multiple target commits.
+- Avoid opening an editor. Use helper modes or `GIT_SEQUENCE_EDITOR=true` for autosquash fallback rebases when the generated todo is sufficient.
 - After rewriting commits that were already pushed, use `git push --force-with-lease`, never plain force.
 
 ## Process
@@ -37,7 +37,8 @@ Use when the user asks to fix up, amend, reword, squash, or reorder commits that
    git commit --amend -m "New commit message."
    ```
 
-4. The helper modes require a clean worktree because they start the rebase immediately. If the needed code change is already unstaged/staged, either commit/stash unrelated work first or use the fixup/autosquash fallback in step 7.
+4. The helper modes require a clean worktree because they start the rebase immediately. If the needed code change is not yet applied, use `git edit-commit --edit <target-commit>` and make the edit at the stopped commit. If the worktree already contains the desired edits and they must be distributed across older commits, either cleanly stash/reapply them around helper runs or use the scoped fixup/autosquash fallback in step 7.
+
 
 5. For a message-only fix to an older commit and a clean worktree, use the helper:
 
@@ -45,10 +46,10 @@ Use when the user asks to fix up, amend, reword, squash, or reorder commits that
    git edit-commit --message-only <target-commit> "New commit message."
    ```
 
-   If the helper is not on `PATH`, call the installed binary directly:
+   If the helper is not on `PATH`, call this package's binary directly:
 
    ```bash
-   ~/.omp/plugins/node_modules/.bin/git-edit-commit --message-only <target-commit> "New commit message."
+   node /path/to/marlens-rules-and-skills/bin/git-edit-commit.js --message-only <target-commit> "New commit message."
    ```
 
    The helper marks exactly the target commit as `reword`, writes the supplied message non-interactively, and replays later commits.
@@ -58,6 +59,12 @@ Use when the user asks to fix up, amend, reword, squash, or reorder commits that
    ```bash
    git edit-commit --edit <target-commit>
    git edit-commit --edit <target-commit> "New commit message."
+   ```
+
+   If the helper is not on `PATH`, call this package's binary directly:
+
+   ```bash
+   node /path/to/marlens-rules-and-skills/bin/git-edit-commit.js --edit <target-commit>
    ```
 
    The helper marks exactly the target commit as `edit`, optionally amends its message, then stops. Make code or message edits, stage them, amend the stopped commit, and continue:
@@ -70,13 +77,16 @@ Use when the user asks to fix up, amend, reword, squash, or reorder commits that
 
    If conflicts appear while later commits replay, resolve each conflict in scope, run the smallest relevant check, then run `git rebase --continue` again. Abort with `git rebase --abort` if a conflict is outside the requested rewrite.
 
-7. If the helper is unavailable and you need content changes to an older commit:
+7. If the helper is unavailable or existing worktree edits must be split across older commits:
 
    ```bash
    git add <only-files-for-this-fixup>
    git commit --fixup <target-commit>
    GIT_SEQUENCE_EDITOR=true git rebase -i --autosquash <target-commit>^
    ```
+
+   For multiple target commits, create every scoped fixup first, then autosquash once from the
+   oldest target commit's parent.
 
    If the target commit is the root commit, use `git rebase -i --autosquash --root`.
 

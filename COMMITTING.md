@@ -131,9 +131,10 @@ Focus on:
 
 Avoid: in-progress reasoning, implementation mechanics, and code symbols in prose.
 
-## Rewording past commits
+## Rewriting past commits
 
-The global git editor is `devin-desktop --wait`, which hangs when invoked non-interactively. Use these patterns instead.
+Prefer the `git-rebase` skill and this package's `bin/git-edit-commit.js` helper.
+Do not hand-roll detached-HEAD rebases unless the helper is unavailable or the worktree already contains edits that must be split across multiple older commits.
 
 **Reword HEAD:**
 
@@ -144,25 +145,44 @@ git commit --amend -m "new message"
 **Reword an older commit:**
 
 ```bash
-# 1. Detach HEAD at the target commit
-git checkout <hash>
-# 2. Amend directly (-m bypasses the editor)
-git commit --amend -m "new message"
-# 3. Rebase the branch tip back on top
-git rebase --onto HEAD <branch-tip>~ <branch-tip>
-# 4. Move the branch pointer back
-git branch -f <branch> HEAD && git checkout <branch>
+git edit-commit --message-only <commit> "new message"
 ```
 
-**Interactive rebase without editor hang:**
+If `git edit-commit` is not on `PATH`, use:
 
 ```bash
-GIT_EDITOR="true" git rebase -i <base>
+node /path/to/marlens-rules-and-skills/bin/git-edit-commit.js --message-only <commit> "new message"
 ```
 
-`GIT_EDITOR="true"` makes git use the `true` no-op command for commit message editing, so the sequence editor step works normally but individual message editing is skipped. Combine with `--amend -m` for rewording specific commits mid-rebase.
+**Amend code into an older commit with a clean worktree:**
 
-NOTE: Multi-line `--exec` strings in `git rebase --onto` are not supported.
+```bash
+git edit-commit --edit <commit>
+git add <paths>
+git commit --amend --no-edit
+git rebase --continue
+```
+
+If `git edit-commit` is not on `PATH`, use:
+
+```bash
+node /path/to/marlens-rules-and-skills/bin/git-edit-commit.js --edit <commit>
+```
+
+**Fallback for already-working tree changes that span older commits:**
+
+Use this only when the helper cannot apply cleanly because the desired edits already exist in the worktree or must be split across multiple targets. Split the diff by concern, create scoped fixups, then autosquash from the oldest target:
+
+```bash
+git add <paths-for-first-concern>
+git commit --fixup <first-target-commit>
+git add <paths-for-second-concern>
+git commit --fixup <second-target-commit>
+GIT_SEQUENCE_EDITOR=true git rebase -i --autosquash <oldest-target-commit>^
+```
+
+Use `git push --force-with-lease` after rewriting a pushed feature branch. Never use plain
+`git push --force`.
 
 ---
 

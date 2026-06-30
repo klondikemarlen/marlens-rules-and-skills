@@ -18,15 +18,16 @@ Use when the user explicitly asks to commit, amend, or commit a staged/relevant 
 
 ## Process
 
-1. Read repo-local commit guidance first, especially `COMMITTING.md` when present.
+1. Read commit guidance before staging: repo-local `COMMITTING.md` first, then this package's shared `COMMITTING.md` for defaults not overridden by the repo.
 2. Check `git status --short` and preserve unrelated local work.
 3. Inspect staged files with `git diff --cached --name-status` and `git diff --cached --stat`.
 4. If the user asked for `commit staged`, commit only the index.
 5. If the user asked to commit a named/relevant set, stage only files that clearly belong to that requested change. Avoid `git add .`.
 6. Review enough staged diff to understand the purpose with `git diff --cached -- <paths>`.
 7. If the purpose or file ownership is unclear, ask instead of guessing.
-8. Commit with the repo's message style.
-9. If output is terse, verify the result with `git log -1 --oneline`.
+8. If the request includes amending older commits or reorganizing branch history, switch to the `git-rebase` workflow before committing.
+9. Commit with the repo's message style.
+10. If output is terse, verify the result with `git log -1 --oneline`.
 
 ## Output Contract
 

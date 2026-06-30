@@ -13,7 +13,7 @@ Use when creating or updating a pull request.
 
 1. Inspect repository status and preserve unrelated local work.
 2. Read the branch diff and recent commits before drafting text.
-3. Create or update a draft PR unless the user asks for ready-for-review.
+3. Create PRs as drafts. Before pushing changes to an existing open PR, convert it back to draft unless the user asks to keep it ready for review.
 4. Write a PR body with these sections when applicable:
    - Related links
    - Context: why the change exists
